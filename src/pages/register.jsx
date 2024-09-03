@@ -7,8 +7,9 @@ import { useEffect, useState } from 'react';
 import { FaRegEye, FaRegEyeSlash  } from "react-icons/fa";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { boolean, z } from "zod";
+import { z } from "zod";
 import { Bounce, toast } from 'react-toastify';
+// import { fs } from 'fs';
 // import { City } from 'country-state-city';
 
 const schema = z
@@ -40,6 +41,15 @@ export default function Register() {
 
   useEffect(()=>{
     // setCity(City.getCitiesOfState('IN', 'GJ'));
+    fetch(`/cities.json`)
+      .then((res) => res.json())
+      .then((res) => {
+        setCity(res.districts)
+        console.log(res.districts);
+      }).catch((err) => {
+        console.log(err);
+        setMsg(`Error Occured : ${err}`);
+      });
   },[])
 
   useEffect(()=>{
@@ -190,11 +200,11 @@ const hanldeRegister = (formData) => {
                   className="w-full rounded-lg border border-stroke bg-transparent p-3 text-black outline-none focus:border-primary focus:shadow-md dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
                 >
                 <option className="py-2">Select City</option>
-                    {/* {city.map((city, key) => (
-                      <option value={city.name} key={key} className="py-2">
-                        {city.name}
+                    {city.map((city, key) => (
+                      <option value={city} key={key} className="py-2">
+                        {city}
                       </option>
-                    ))} */}
+                    ))}
                   </select>
                 <span className="absolute right-4 top-3">
                 <PiCity className="text-gray-500 h-6 w-6" />

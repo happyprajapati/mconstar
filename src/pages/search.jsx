@@ -39,7 +39,7 @@ function search() {
     },[])
 
   return (
-    <div className="min-h-screen pt-30 md:pt-20 lg:pt-24 xl:pt-24 px-5">
+    <div className="min-h-screen pt-[75px] lg:pt-24 xl:pt-24 px-5">
       
       <h2 data-aos="fade-right" className="text-2xl font-bold tracking-tight md:text-3xl lg:text-4xl">
         {value}
