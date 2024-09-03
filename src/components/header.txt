@@ -1,0 +1,223 @@
+import React from "react";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faSearch, faXmark } from '@fortawesome/free-solid-svg-icons'
+import {
+  Navbar,
+  MobileNav,
+  Typography,
+  IconButton,
+} from "@material-tailwind/react";
+
+export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  // const location = useLocation();
+  const [openNav, setOpenNav] = React.useState(false);
+  const [openSearch, setOpenSearch] = React.useState(false);
+  const [url, setUrl] = React.useState("");
+  const [scroll, setScroll] = React.useState(false);
+  const [isLogin, setIsLogin] = React.useState(false);
+
+  const handleScroll = () => {
+    if (window.scrollY > 80) {
+      setScroll(true);
+    } else {
+      setScroll(false);
+    }
+  };
+
+  const handleSearch = () => {
+    setOpenSearch(!openSearch);
+  }
+
+  React.useEffect(() => {
+    if (localStorage.getItem("login")) {
+      setIsLogin(true);
+    }
+    window.addEventListener(
+      "resize",
+      () => window.innerWidth >= 960 && setOpenNav(false)
+    );
+    window.addEventListener("scroll", handleScroll);
+
+    setUrl(location.pathname);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  
+  const navList = (
+    <ul className="mt-2 mb-4 flex flex-col gap-1 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-5">
+      <a href="/" className="flex items-center">
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className={`py-1 px-3 rounded-md mx-auto font-normal text-md hover:bg-bt hover:bg-gray-900/10 ${
+            url === "/" ? "bg-bt text-bt-tx drop-shadow-lg" : ""
+          }`}
+        >
+          Home
+        </Typography>
+      </a>
+      <a href="/about" className="flex items-center">
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className={`py-1 px-3 rounded-md mx-auto font-normal text-md hover:bg-bt  hover:bg-gray-900/10 ${
+            url === "/about" ? "bg-bt text-bt-tx drop-shadow-lg" : ""
+          }`}
+        >
+          About
+        </Typography>
+      </a>
+      <a href="/contact" className="flex items-center">
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className={`py-1 px-3 rounded-md mx-auto font-normal text-md hover:bg-bt  hover:bg-gray-900/10 ${
+            url === "/contact" ? "bg-bt text-bt-tx drop-shadow-lg" : ""
+          }`}
+        >
+          Contact Us
+        </Typography>
+      </a>
+      <button className="px-3 sm:hidden md:hidden lg:flex xl:flex" onClick={handleSearch}>
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+        >
+          <FontAwesomeIcon icon={faSearch} className="h-4" />
+        </Typography>
+      </button>
+      {isLogin && (
+        <a href="/logout" className="flex items-center">
+          <Typography
+            as="li"
+            variant="small"
+            color="blue-gray"
+            className={`py-1 px-3 rounded-md mx-auto font-normal text-md hover:bg-bt  hover:bg-gray-900/10 ${
+              url === "/logout" ? "bg-bt text-bt-tx drop-shadow-lg" : ""
+            }`}
+          >
+            Logout
+          </Typography>
+        </a>
+      )}
+    </ul>
+  );
+
+  return (
+    <div className="max-h-[768px] max-w-screen">
+      <Navbar
+        className={`fixed top-0 z-10 h-max max-w-full px-4 py-0 lg:px-8 rounded-none transition duration-300 ease-in border-none bg-opacity-100 bg-bt-tx ${
+          scroll ? "scroll" : ""
+        }`}
+      >
+        <div className="flex items-center justify-between text-blue-gray-900">
+          <a href="/" className=" mr-4 cursor-pointer justify-start">
+            <img src="/logo.png" className="object-contain lg:h-16 sm:h-14"/>
+          </a>
+          <div className="w-full flex items-center justify-around gap-4">
+            <div className="justify-start hidden lg:block">{navList}</div>
+            <div className="w-full flex lg:hidden items-center justify-end gap-x-1">
+              {/* <a href="profile" className="flex items-center">
+                <img src="/Profile.jpg" className=" w-7 h-7 rounded-full" />
+              </a> */}
+              <div className="flex items-center gap-x-3">
+                <FontAwesomeIcon icon={faSearch} onClick={handleSearch} className="h-4 px-2 lg:hidden xl:hidden cursor-pointer" />
+                <IconButton
+                  variant="text"
+                  className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
+                  ripple={false}
+                  onClick={() => setOpenNav(!openNav)}
+                >
+                  {openNav ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      className="h-6 w-6"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M4 6h16M4 12h16M4 18h16"
+                      />
+                    </svg>
+                  )}
+                </IconButton>
+                {!isLogin && <div className="flex items-center gap-x-1">
+                <a href="/login"
+                  className={` px-4 py-2 font-sans text-xs font-bold text-center uppercase align-middle transition-all rounded-lg select-none hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block ${url === "/login" ? "bg-bt text-bt-tx drop-shadow-lg" : ""}`}
+                  type="button">
+                  <span>Log In</span>
+                </a>
+                <a href="/register"
+                  className={` px-4 py-2 font-sans text-xs font-bold text-center uppercase align-middle transition-all rounded-lg select-none hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block ${url === "/register" ? "bg-bt text-bt-tx drop-shadow-lg" : ""}`}
+                  type="button">
+                  <span>Sign in</span>
+                </a>
+              </div>}
+              </div>
+            </div>
+          </div>
+          <div className={`fixed h-screen inset-0 bg-black/60 z-40 flex items-center justify-center overflow-y-auto ${openSearch ? 'block' : 'hidden'}`}>
+            <p className="absolute top-5 right-10" onClick={handleSearch}><FontAwesomeIcon icon={faXmark} className="h-10 text-bt-tx cursor-pointer" /></p>
+            <div className="bg-main rounded-lg shadow-lg w-full max-w-md p-6">
+              <h2 className="text-2xl font-bold mb-4">Search</h2>
+              <div className="flex items-center space-x-2">
+              <input
+                id="name"
+                placeholder="Search item..."
+                className="block w-full p-2 rounded-md border border-stroke focus:shadow-md outline-none text-sm md:text-sm lg:text-md"
+                required=""
+                type="text"
+              />
+                 <button
+              type="submit"
+              className="bg-bt text-bt-tx px-5 py-2 rounded-lg"
+            >
+              <FontAwesomeIcon icon={faSearch} className="h-4" />
+            </button>
+              </div>
+            </div>
+          </div>
+          {!isLogin && <div className="flex items-center gap-x-1">
+            <a href="login"
+              className={`hidden w-[80px] px-4 py-2 font-sans text-xs font-bold text-center uppercase align-middle transition-all rounded-lg select-none hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block ${url === "/login" ? "bg-bt text-bt-tx drop-shadow-lg" : ""}`}
+              type="button">
+              <span>Log In</span>
+            </a>
+            <a href="register"
+              className={`hidden w-[80px] px-4 py-2 font-sans text-xs font-bold text-center uppercase align-middle transition-all rounded-lg select-none hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block ${url === "/register" ? "bg-bt text-bt-tx drop-shadow-lg" : ""}`}
+              type="button">
+              <span>Sign in</span>
+            </a>
+          </div>}
+        </div>
+        <MobileNav open={openNav}>{navList}</MobileNav>
+      </Navbar>
+    </div>
+  );
+}
