@@ -118,9 +118,9 @@ export default function Login() {
                 <span className="absolute right-4 top-3.5">
                   <BsTelephone className="text-gray-500 h-5 w-5" />
                 </span>
-                {errors.contact && (
+                {errors.phone && (
                   <span className="text-[#b91c1c]">
-                    {errors.contact.message}
+                    {errors.phone.message}
                   </span>
                 )}
               </div>
