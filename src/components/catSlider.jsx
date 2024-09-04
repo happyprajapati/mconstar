@@ -65,7 +65,7 @@ export default function CatSlider() {
             >
               <a href={'/cat/' + cats.id}>
                 <div className="relative w-full h-40 rounded-xl overflow-hidden">
-                    <img src="slider.jpg" alt="category image" className="absolute object-cover"></img>
+                    <img src={`${import.meta.env.VITE_BASE_URL}/api/products/image/${cats.img}`} alt="category image" className="absolute object-cover"></img>
                     <p className="absolute inset-0 h-full bg-black/30 flex items-center justify-center text-white font-semibold text-xl transition-opacity group-hover:opacity-0">{cats.name}</p>
                 </div>
               </a>

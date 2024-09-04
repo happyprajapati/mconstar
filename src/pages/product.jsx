@@ -149,7 +149,7 @@ export default function Product() {
             onClick={handleInquiry}
             className="flex border-2 border-bt text-bt px-10 py-2 font-bold rounded-lg hover:drop-shadow-xl"
           >
-            Inquire
+            Inquiry
           </a>
         </div>
       </div>

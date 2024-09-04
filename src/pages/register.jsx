@@ -40,7 +40,6 @@ export default function Register() {
   } = useForm({ resolver: zodResolver(schema) });
 
   useEffect(()=>{
-    // setCity(City.getCitiesOfState('IN', 'GJ'));
     fetch(`/cities.json`)
       .then((res) => res.json())
       .then((res) => {
@@ -64,7 +63,7 @@ export default function Register() {
     }
   },[userOtp])
 
-  const handleOtp = () => {
+  const sendOtp = () => {
     if(contact.length === 10){
       fetch(`${import.meta.env.VITE_BASE_URL}/auth/getotp`, {
         method: "POST",
@@ -246,7 +245,7 @@ const hanldeRegister = (formData) => {
                 <button
                   // type="submit"
                   className="h-10 bg-bt text-bt-tx px-3 rounded-lg"
-                  onClick={handleOtp}
+                  onClick={sendOtp}
                 >
                   Send OTP
                 </button>

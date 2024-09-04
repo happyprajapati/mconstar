@@ -6,7 +6,6 @@ import AOS from "aos";
 
 export default function Home() {
   useEffect(() => {
-    console.log("hello Wolrd!!")
     if (localStorage.getItem("authToken") == null) {
       window.location.href = `https://meghainfocom.up.railway.app/login`;
     } else {
