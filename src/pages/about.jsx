@@ -16,7 +16,7 @@ export default function About() {
   }, [])
 
   return (
-    <div className="mx-auto space-y-6 px-5 pt-20 md:pt-20 lg:pt-28 xl:pt-30">
+    <div className="mx-auto space-y-6 min-h-screen px-5 pt-20 md:pt-20 lg:pt-28 xl:pt-30">
       <div data-aos="fade-right">
       <h2 className="mx-auto max-w-[900px] text-3xl font-bold pb-1 border-b-2">
         About us

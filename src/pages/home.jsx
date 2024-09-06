@@ -18,8 +18,7 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-    Hello World!!
+    <div className='min-h-screen'>
       <ImageSlider />
       <div data-aos="fade-up">
         <CatSlider />
@@ -30,6 +29,6 @@ export default function Home() {
       <div data-aos="zoom-in-up">
         <Cards name={"new"} />
       </div>
-    </>
+    </div>
   );
 }

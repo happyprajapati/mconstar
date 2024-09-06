@@ -36,7 +36,7 @@ export default function CatProd() {
       .then((res) => res.json())
       .then((res) => {
         console.log(res.data);
-        setTitle(res.data.content ? res.data.content[0]?.category?.name : "No Product Found.")
+        setTitle(res.data.content.length > 0 ? res.data.content[0]?.category?.name : "No Product Found.")
         setData(res.data);
       });
   },[page])
@@ -64,7 +64,7 @@ export default function CatProd() {
   const pageNumbers = getPageNumbers();
 
   return (
-    <div className="pt-20 md:pt-20 lg:pt-24 xl:pt-24 px-5">
+    <div className="min-h-screen pt-20 md:pt-20 lg:pt-24 xl:pt-24 px-5">
       
       <h2 data-aos="fade-right" className="text-2xl font-bold tracking-tight md:text-3xl lg:text-4xl">
         {title}

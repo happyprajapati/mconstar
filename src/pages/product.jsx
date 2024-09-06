@@ -80,7 +80,7 @@ export default function Product() {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6 lg:gap-12 items-start max-w-6xl px-4 mx-auto py-6 pt-20 md:pt-20 lg:pt-24 xl:pt-24">
+    <div className=" min-h-screen grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6 lg:gap-12 items-start max-w-6xl px-4 mx-auto py-6 pt-20 md:pt-20 lg:pt-24 xl:pt-24">
       <div data-aos="fade-right" className="prod">
         {prod.imageNames.length > 0 && (
           <>
