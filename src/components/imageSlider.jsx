@@ -35,7 +35,7 @@ const ImageSilder = () => {
   },[])
 
     return (
-        <div className="flex flex-col justify-center sm:h-full md:h-full lg:h-screen xl:lg:h-full items-center pt-6 bg-black/20 lg:mx-20 md:mx-8 sm:mx-2 rounded-xl">
+        <div className="flex flex-col justify-center h-full items-center pt-6 bg-black/20 lg:mx-20 md:mx-8 sm:mx-2 rounded-xl">
         <Carousel className="mt-12" autoplay loop
           navigation={({ setActiveIndex, activeIndex, length }) => (
             <div className="absolute bottom-4 left-2/4 z-5 flex -translate-x-2/4 gap-2">
