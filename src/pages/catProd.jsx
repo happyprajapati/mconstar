@@ -64,7 +64,7 @@ export default function CatProd() {
   const pageNumbers = getPageNumbers();
 
   return (
-    <div className="min-h-screen pt-20 md:pt-20 lg:pt-24 xl:pt-24 px-5">
+    <div className="pt-20 md:pt-20 lg:pt-24 xl:pt-24 px-5">
       
       <h2 data-aos="fade-right" className="text-2xl font-bold tracking-tight md:text-3xl lg:text-4xl">
         {title}

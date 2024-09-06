@@ -34,7 +34,7 @@ function App() {
   // }, [])
 
   return (
-    <div className="bg-main">
+    <div className="bg-main min-h-screen">
       <loginContext.Provider value={{ login, setLogin }}>
         <ToastContainer />
         <Header />

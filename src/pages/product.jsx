@@ -12,6 +12,7 @@ import "./../style.css";
 
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { RiShareBoxLine } from "react-icons/ri";
 import AOS from "aos";
 
 // import required modules
@@ -79,7 +80,7 @@ export default function Product() {
   }
 
   return (
-    <div className=" min-h-screen grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6 lg:gap-12 items-start max-w-6xl px-4 mx-auto py-6 pt-20 md:pt-20 lg:pt-24 xl:pt-24">
+    <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6 lg:gap-12 items-start max-w-6xl px-4 mx-auto py-6 pt-20 md:pt-20 lg:pt-24 xl:pt-24">
       <div data-aos="fade-right" className="prod">
         {prod.imageNames.length > 0 && (
           <>
@@ -141,7 +142,7 @@ export default function Product() {
             className="flex border-2 border-bt bg-bt text-bt-tx px-10 py-2 rounded-lg hover:drop-shadow-xl"
             target="_blank"
           >
-            <ShareIcon className="w-5 h-5 mr-2" />
+            <RiShareBoxLine className="w-5 h-5 mr-2" />
             Share
           </a>
           <a
@@ -154,26 +155,5 @@ export default function Product() {
         </div>
       </div>
     </div>
-  );
-}
-
-function ShareIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8" />
-      <polyline points="16 6 12 2 8 6" />
-      <line x1="12" x2="12" y1="2" y2="15" />
-    </svg>
   );
 }

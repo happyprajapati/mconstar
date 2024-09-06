@@ -82,7 +82,7 @@ const handleContact = (formData) =>{
 
   return (
     <>
-      <div data-aos="zoom-out" className="max-w-md space-y-6 h-screen mx-auto px-3 pt-24">
+      <div data-aos="zoom-out" className="max-w-md space-y-6 mx-auto px-3 pt-24">
         <div className="space-y-2 text-center">
           <h2 className="text-3xl font-bold">Get in Touch</h2>
           <p className="text-gray-500 dark:text-gray-400">
